@@ -13,6 +13,16 @@ function renderCartContents() {
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  // week 2 check if items exist in cart
+  if (cartItems.length > 0) {
+    // iterate over array and total each value
+    const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+    document.querySelector(".cart-total").textContent =
+      `Total: $${total.toFixed(2)}`;
+    // removes the css 'hide'
+    document.querySelector(".cart-footer").classList.remove("hide");
+  }
 }
 
 function cartItemTemplate(item) {
