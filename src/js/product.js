@@ -15,10 +15,9 @@ function addProductToCart(product) {
   let cartItems = getLocalStorage("so-cart") || [];
 
   // if NOT array, make it so!
-  /*
   if (!Array.isArray(cartItems)) {
     cartItems = [];
-  }*/
+  }
 
   // push cart item to array
   cartItems.push(product);
