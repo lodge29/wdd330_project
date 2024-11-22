@@ -15,9 +15,10 @@ function addProductToCart(product) {
   let cartItems = getLocalStorage("so-cart") || [];
 
   // if NOT array, make it so!
+  /*
   if (!Array.isArray(cartItems)) {
     cartItems = [];
-  }
+  }*/
 
   // push cart item to array
   cartItems.push(product);
@@ -25,6 +26,7 @@ function addProductToCart(product) {
   // store array in local storage for output
   setLocalStorage("so-cart", cartItems);
 }
+
 // add to cart button event handler
 async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
