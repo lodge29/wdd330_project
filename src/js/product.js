@@ -10,7 +10,7 @@ const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-// :::WEEK 1::: add 'product' to array for cart output
+// :::WEEK 1::: add 'product' to array for cart 
 function addProductToCart(product) {
   let cartItems = getLocalStorage("so-cart") || [];
 
