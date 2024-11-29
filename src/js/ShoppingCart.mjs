@@ -28,5 +28,14 @@ export default class ShoppingCart {
     const cartItems = getLocalStorage(this.key);
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
+
+    if (cartItems.length > 0) {
+      // iterate over array and total each value
+      const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+      document.querySelector(".cart-total").textContent =
+        `Total: $${total.toFixed(2)}`;
+      // removes the class name "hide"
+      document.querySelector(".cart-footer").classList.remove("hide");
+    }
   }
 }
