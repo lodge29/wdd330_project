@@ -20,6 +20,8 @@ export default class ProductList {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    // :::WEEK3:::
+    this.sortOption = 'name';
   }
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
@@ -30,12 +32,26 @@ export default class ProductList {
     this.renderList(list);
     //set the title to the current category
     document.querySelector(".title").innerHTML = this.category;
+    // :::WEEK3:::
+    // sort by NAME or PRICE
+    document.querySelector("#sort-by-name").addEventListener("click", () => this.sortBy('name')); 
+    document.querySelector("#sort-by-price").addEventListener("click", () => this.sortBy('price'))
   }
-  // render after doing the first stretch
-  renderList(list) {
-    renderListWithTemplate(productCardTemplate, this.listElement, list);
-  }
+  
+  renderList(list) { 
+    // Sort list by selecting NAME or PRICE
+    if (this.sortOption === 'name') { 
+      list.sort((a, b) => a.Name.localeCompare(b.Name)); 
+    } else if (this.sortOption === 'price') { 
+      list.sort((a, b) => a.FinalPrice - b.FinalPrice); 
+    } 
+    renderListWithTemplate(productCardTemplate, this.listElement, list); 
+  } 
 
+  sortBy(option) { 
+    this.sortOption = option; 
+    this.init(); 
+    }
   // render before doing the stretch
   // renderList(list) {
   //   const htmlStrings = list.map(productCardTemplate);
