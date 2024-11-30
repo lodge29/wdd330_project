@@ -29,6 +29,7 @@ export default class ShoppingCart {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
 
+    // :::WEEK2::: display total in cart
     if (cartItems.length > 0) {
       // iterate over array and total each value
       const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
